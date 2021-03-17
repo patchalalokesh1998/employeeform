@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-dark">
     <span style="color: white;font-size:large;">Employee Form</span>
     </nav>
-    <div class="container offset-md-2 mt-3">
+    <div class="container offset-md-1 mt-3">
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
     <div>
         <div class="form-group">
@@ -62,6 +62,7 @@
         <div *ngIf="notInterested; else interested">
             <div>
             <div class="form-group">
+                <label>Date:</label>
           <input type="date"
                  class="form-control"
                  formControlName="date"
@@ -80,13 +81,19 @@
         <div>
         <div class="form-group">
         <ng-template #interested>
-            <input style="width: 80%;"type="date"
+            <label>Select a Date<span style="color: red;">*</span></label>
+            <input style="width: 95%;"type="date"
                  class="form-control"
                  formControlName="date"
                  name="date"
-                 id="date">
+                 id="date"
+                 [ngClass]="{'is-invalid':employeeForm.get('date').touched && 
+                 employeeForm.get('date').invalid}">
+                 <div class="invalid-feedback" *ngIf="employeeForm.get('date').hasError('required')" >
+                    Please select a Date
+                </div>
             <label class="mt-2">Reason:</label>
-            <textarea rows="8"style="width: 80%;"class="form-control mt-2" placeholder="Please enter the reason"></textarea>
+            <textarea rows="8"style="width: 95%;"class="form-control mt-2" placeholder="Please enter the reason"></textarea>
         </ng-template>
     </div>
     </div>
@@ -97,74 +104,3 @@
     </div>
     </form>
     </div>
-    <!-- <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="form-row">
-                    <div class="form-group">
-                     <label>Name:</label>
-                     <input type="text" 
-                            formControlName="name" 
-                            class="form-control"
-                            [ngClass]="{'is-invalid':employeeForm.get('name').touched && 
-                            employeeForm.get('name').invalid}"/> 
-                            <div class="invalid-feedback" *ngIf="employeeForm.get('name').hasError('required')">
-                                Please Enter Your Name
-                             </div>   
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-row">
-                    <div class="form-group">
-                    <label>Employee Id</label> 
-                    <input type="text" 
-                            formControlName="employeeId" 
-                            class="form-control"
-                            [ngClass]="{'is-invalid':employeeForm.get('employeeId').touched && 
-                            employeeForm.get('employeeId').invalid}"/> 
-                            <div class="invalid-feedback" *ngIf="employeeForm.get('employeeId').hasError('required')">
-                                Please Enter Your Employee Id
-                             </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="form-row">
-                    <div class="form-group">
-                     <label>Project Manager/Mentee Mail Id</label> 
-                     <input type="email" 
-                            class="form-control">  
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-row">
-        <div class="form-group">
-            <label>Status</label>
-            <select formControlName="status"
-                    class="form-control"
-                    name="status"
-                    id="status"
-                    
-                    [ngClass]="{'is-invalid':employeeForm.get('status').touched && 
-                    employeeForm.get('status').invalid}"
-                    (change)="onSelection()"
-                    >
-                
-            <option value="Interested" selected>Interested</option>  
-            <option value="Not Interested">Not Interested</option>      
-    
-            </select>
-            <div class="invalid-feedback" *ngIf="employeeForm.get('employeeId').hasError('required')">
-             Please Select an Option
-            </div>
-        </div>
-    </div>
-    
-            </div>
-    
-        </div>
-    </div> -->
