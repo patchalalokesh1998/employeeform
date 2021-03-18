@@ -1,7 +1,11 @@
-<nav class="navbar navbar-light bg-dark">
-    <span style="color: white;font-size:large;">Employee Form</span>
-    </nav>
-    <div class="container offset-md-1 mt-3">
+
+<nav style="display: flex; justify-content: center; height:70px;" class="navbar navbar-light bg-dark">
+    <div><h3 style="color: white;">Employee Form</h3>
+    </div>
+     </nav>
+     <div class="backgroundmain">
+    <div  class="container foreground">
+    <div style="padding:10px;" class="offset-md-2 offset-lg-3 col-12 col-md-8 col-lg-6">
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
     <div>
         <div class="form-group">
@@ -29,7 +33,7 @@
                  </div>  
         </div>
     </div>
-    <div >
+    <div>
         <div class="form-group">
          <label>Project Manager/Mentee Mail Id:</label> 
          <input type="email" 
@@ -82,7 +86,7 @@
         <div class="form-group">
         <ng-template #interested>
             <label>Select a Date<span style="color: red;">*</span></label>
-            <input style="width: 95%;"type="date"
+            <input type="date"
                  class="form-control"
                  formControlName="date"
                  name="date"
@@ -93,7 +97,7 @@
                     Please select a Date
                 </div>
             <label class="mt-2">Reason:</label>
-            <textarea rows="8"style="width: 95%;"class="form-control mt-2" placeholder="Please enter the reason"></textarea>
+            <textarea rows="4" class="form-control mt-2" placeholder="Please enter the reason"></textarea>
         </ng-template>
     </div>
     </div>
@@ -103,4 +107,6 @@
             [disabled]="employeeForm.invalid">Submit</button>
     </div>
     </form>
+    </div>
+    </div>
     </div>
