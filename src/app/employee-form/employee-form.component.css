@@ -1,4 +1,90 @@
-.form-group
+.header
 {
-    width: 95%;
+    background-color: black;
 }
+.sideimage
+{
+    background-image: url('../../assets/bg@3x.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* z-index: 100; */
+    height:1200px;
+}
+.logo
+{
+    display: none;
+}
+.form-control
+{
+    border-radius:12px;
+}
+.btn{
+    border-radius: 15px;
+}
+/* option
+{
+    border-radius: 15px;
+} */
+@media only screen and (max-width:767px)
+{
+   
+    .sideimage{
+        display: none;
+        
+    }
+    .logo
+    {
+        display: block;
+    }
+}
+@media only screen and (max-width:768px)
+{
+.sideimage
+{
+    height:1377px;
+    background-image: url('../../assets/bg@2x.png');
+}
+}
+/* .outer
+{
+ 
+} */
+/* @media only screen and (max-width: 425px)
+{
+    .navbar-heading
+    {
+        font-size: 18px;
+        margin-right:20%;
+       
+    } */
+/* .outer
+{
+ 
+ 
+} */
+/* }
+@media only screen and (max-width: 320px)
+{
+  .navbar-heading
+  {
+      margin-right: 8%;
+  }
+} */
+.header{
+    display:flex;
+    justify-content: space-between;
+}
+.btn
+{
+    font-size:20px;
+    width:150px;
+    height:49px;
+ 
+}
+.label
+{
+    font-family: 'Roboto', sans-serif;
+}
+ 
+ 
