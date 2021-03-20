@@ -1,0 +1,40 @@
+<img src="../../assets/2021-03-18.png" class="img-fluid logo" alt="alt text">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-7 col-lg-6 sideimage">
+        </div>
+        <div class="col">
+            <div style="text-align: center; font-family: 'Roboto', sans-serif; margin-top: 20px; margin-bottom: 20px; font-size: 21px; color:#0c0c69">Hello Absyzians<br>
+                <b> Welcome back to Office</b>
+            </div>
+            <div style="display:flex;justify-content: center; height: 30%; align-items: center;">
+         <button class="btn btn-primary" (click)="exportToExcel()">Download</button>
+        </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="tabledata" style=" margin: auto; width: 100%; display:none;">               
+    <table id="excel-table">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Employeeid</th>
+        <th>Email</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Date of return</th>
+        <th>Reason</th>
+      </tr>
+      <tr *ngFor="let user of tabledata.forms">
+        
+        <id>{{user.id}}</id>
+        <td>{{user.name}}</td>
+        <td>{{user.employeeid}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.status}}</td>
+        <td>{{user.date}}</td>
+        <td>{{user.dateSelected}}</td>
+        <td>{{user.reason}}</td>
+      </tr>
+    </table>
+  </div>
