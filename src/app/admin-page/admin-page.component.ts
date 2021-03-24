@@ -15,8 +15,7 @@ export class AdminPageComponent implements OnInit {
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get('http://employeeserviceapp-env.eba-pvfsnwfm.us-east-2.elasticbeanstalk.com//api/employeeresponses')
-    .subscribe(data=>{
+    this.http.get('').subscribe(data=>{
       console.log(data);
       this.tabledata=data;
     })

@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http'
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
+ 
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    GooglePlaceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

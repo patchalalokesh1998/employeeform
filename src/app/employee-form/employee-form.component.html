@@ -11,13 +11,13 @@
                        <div  class=" foreground">
                            <!-- offset-md-2 offset-lg-3 -->
                            <div style="text-align: center; font-family: 'Roboto', sans-serif; margin-top: 20px; margin-bottom: 20px; font-size: 21px; color:#0c0c69">Hello Absyzians<br>
-                               <b> Welcome back to Office</b>
+                               <b>Office Reopening Plan on 1st April 2021</b>
                            </div>
                            
-                           <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                           <form [formGroup]="employeeForm" (ngSubmit)="submit()">
                        <div>
                            <div class="form-group">
-                            <label class="label"><i>Name<span style="color: red;">*</span>:</i></label>
+                            <label class="label">Name<span style="color: red;">*</span>:</label>
                             <input type="text" 
                                    formControlName="name" 
                                    class="form-control" 
@@ -30,7 +30,7 @@
                        </div>
                        <div>
                            <div class="form-group">
-                           <label class="label"><i>Employee Id<span style="color: red;">*</span>:</i></label> 
+                           <label class="label">Employee Id<span style="color: red;">*</span>:</label> 
                            <input type="text" 
                                    formControlName="employeeid" 
                                    class="form-control"
@@ -41,73 +41,77 @@
                                     </div>  
                            </div>
                        </div>
-                       <div>
-                           <div class="form-group">
-                            <label class="label"><i>Project Manager/Mentee Mail Id:</i></label> 
-                            <input type="email" formControlName="email"
-                                   class="form-control">  
-                           </div>
-                       </div>
                        <div >
                            <div class="form-group">
-                               <label class="label"><i>Status:<span style="color: red;">*</span></i></label>
-                               <select formControlName="status"
+                               <label class="label">Work Location<span style="color: red;">*</span></label>
+                               <select formControlName="preference"
                                        class="form-control"
-                                       name="status"
-                                       id="status"
+                                       name="preference"
+                                       id="preference"
                                        
-                                       [ngClass]="{'is-invalid':employeeForm.get('status').touched && 
-                                       employeeForm.get('status').invalid}"
-                                       (change)="onSelection()"
+                                       [ngClass]="{'is-invalid':employeeForm.get('preference').touched && 
+                                       employeeForm.get('preference').invalid}"
+                                    
                                        >
                                    
-                               <option value="Interested" selected>Interested</option>  
-                               <option value="Not Interested">Not Interested</option>      
+                               <option value="Hyderabad" selected>Hyderabad</option>  
+                               <option value="Banglore">Banglore</option>      
                        
                                </select>
-                               <div class="invalid-feedback" *ngIf="employeeForm.get('employeeid').hasError('required')">
-                                Please Select an Option
+                               <div class="invalid-feedback" *ngIf="employeeForm.get('preference').hasError('required')">
+                                Please Select your work location
                                </div>
                            </div>
                        </div>
+                       <div>
+                        <div class="form-group">
+                        <label class="label">Current Location<span style="color: red;">*</span>:</label> 
+                        <input type="text" 
+                        ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"
+                                formControlName="currentLocation" 
+                                class="form-control"
+                                [ngClass]="{'is-invalid':employeeForm.get('currentLocation').touched && 
+                                employeeForm.get('currentLocation').invalid}"/> 
+                                <div class="invalid-feedback" *ngIf="employeeForm.get('currentLocation').hasError('required')">
+                                    Please Enter Your currentLocation
+                                 </div>  
+                        </div>
+                    </div>
+                    
+                    <div >
+                        <div class="form-group">
+                            <label class="label">Preference<span style="color: red;">*</span></label>
+                            <select formControlName="preference"
+                                    class="form-control"
+                                    name="preference"
+                                    id="preference"
+                                    
+                                    [ngClass]="{'is-invalid':employeeForm.get('preference').touched && 
+                                    employeeForm.get('preference').invalid}"
+                                    (change)="onSelection($event)"
+                            >
+                                
+                            
+                            <option value="workFromHomeForever">Work From Home Forever</option>
+                            <option value="tentativeJoiningDate">Tentative Joining Date</option>      
+
+                    
+                            </select>
+                            <div class="invalid-feedback" *ngIf="employeeForm.get('preference').hasError('required')">
+                             Please select your preference
+                            </div>
+                        </div>
+                    </div>
                            
-                           <div *ngIf="notInterested; else interested">
-                               <div>
-                               <div class="form-group">
-                                   <label class="label"><i>Date:</i></label>
-                             <input type="date"
-                                    class="form-control"
-                                    formControlName="date"
-                                    disabled
-                                    name="date"
-                                    id="date"
-                                    [ngClass]="{'is-invalid':employeeForm.get('date').touched && 
-                                    employeeForm.get('date').invalid}">
-                                    <div class="invalid-feedback" *ngIf="employeeForm.get('date').hasError('required')" >
-                                        Please select a Date
-                                    </div>
-                       
-                           </div>
-                           </div>
-                           </div>
+                           <!-- <div *ngIf="">
+                               
                            <div>
-                           <div class="form-group">
-                           <ng-template #interested>
-                               <label class="label"><i>Select a Date<span style="color: red;">*</span></i></label>
-                               <input type="date"
-                                    class="form-control"
-                                    formControlName="dateSelected"
-                                    name="date"
-                                    id="date"
-                                    [ngClass]="{'is-invalid':employeeForm.get('date').touched && 
-                                    employeeForm.get('date').invalid}">
-                                    <div class="invalid-feedback" *ngIf="employeeForm.get('date').hasError('required')" >
-                                       Please select a Date
-                                   </div>
-                               <label class="mt-2">Reason:</label>
-                               <textarea rows="4" class="form-control mt-2" formControlName="reason" placeholder="Please enter the reason"></textarea>
-                           </ng-template>
+                          
                        </div>
+                       <div class="form-group">
+                        <label class="mt-2">Comments</label>
+                        <textarea rows="4" class="form-control mt-2"
+                         formControlName="comments" placeholder="Please enter the reason"></textarea>
                        </div>
                        <div style="text-align: center;">
                        <button  class="btn btn-primary"
@@ -115,8 +119,62 @@
                                [disabled]="employeeForm.invalid">Submit</button>
                         <p *ngIf="formsucess;" class=" mt-2 text-success label"><b>Details Submitted Succesfully!</b></p> 
                         <p *ngIf="errormessage"class=" mt-2 text-danger label"><b>There is an error submitting your details,Please try again!!</b></p>      
-                       </div>
-                    
+                       </div> -->
+                    <div [ngSwitch]='selectedValue'>
+                        <div *ngSwitchCase="'blank'">
+                            <div>
+                                <div class="form-group">
+                                    <label class="label">Date:</label>
+                              <input type="date"
+                                     class="form-control"
+                                     formControlName="date"
+                                     disabled
+                                     name="date"
+                                     id="date"
+                                     [ngClass]="{'is-invalid':employeeForm.get('date').touched && 
+                                     employeeForm.get('date').invalid}">
+                                     <div class="invalid-feedback" *ngIf="employeeForm.get('date').hasError('required')" >
+                                         Please select a Date
+                                     </div>
+                        
+                            </div>
+                            </div>
+                            </div>
+                            <div *ngSwitchCase="'workFromHomeForever'">
+                                <div class="form-group">
+                                    <label class="mt-2">Comments</label>
+                                    <textarea rows="4" class="form-control mt-2"
+                                     formControlName="comments" placeholder="Please enter the reason"
+                                     [ngClass]="{'is-invalid':employeeForm.get('comments').touched && 
+                                     employeeForm.get('comments').invalid}"></textarea>
+                                     <div class="invalid-feedback" *ngIf="employeeForm.get('comments').hasError('required')" >
+                                        Please comment here
+                                    </div>
+                                   </div>
+                            </div>
+                            <div *ngSwitchCase="'tentativeJoiningDate'">
+                                <div class="form-group">
+                                        <label class="label">Joining Date<span style="color: red;">*</span></label>
+                                        <input type="date"
+                                             class="form-control"
+                                             formControlName="joiningDate"
+                                             name="joiningDate"
+                                             id="joiningDate"
+                                             [ngClass]="{'is-invalid':employeeForm.get('joiningDate').touched && 
+                                             employeeForm.get('joiningDate').invalid}">
+                                             <div class="invalid-feedback" *ngIf="employeeForm.get('joiningDate').hasError('required')" >
+                                                Please select a Date
+                                            </div>
+                                </div> 
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <button  class="btn btn-primary"
+                                    type="submit"
+                                    [disabled]="employeeForm.invalid">Submit</button>
+                             <p *ngIf="formsucess;" class=" mt-2 text-success label"><b>Details Submitted Succesfully!</b></p> 
+                             <p *ngIf="errormessage"class=" mt-2 text-danger label"><b>There is an error submitting your details,Please try again!!</b></p>      
+                            </div>
                        </form>
                        </div>
                        </div>
